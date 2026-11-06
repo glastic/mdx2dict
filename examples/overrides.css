@@ -1,0 +1,56 @@
+/*
+ * Optional CSS overrides for a specific dictionary.
+ *
+ * Usage:
+ *   mdx2dict convert ./dictionary.mdx --css-extra ./examples/overrides.css
+ *
+ * This file is appended after:
+ *   1. the dictionary's own CSS (auto-detected next to the .mdx)
+ *   2. mdx2dict's generic overrides
+ *
+ * Adjust or delete rules as needed. Nothing here is required.
+ */
+
+/* Expand blocks that the base CSS hides by default. */
+.collapse .unbox .box_title + * {
+    display: block !important;
+}
+
+.idioms .idioms_heading ~ * {
+    display: block !important;
+}
+
+/* Readability. */
+body {
+    max-width: 960px;
+    line-height: 1.6;
+}
+
+/* Spacing for bilingual custom tags, if the dictionary uses them. */
+chn {
+    margin-left: .2em;
+    margin-right: .45em;
+}
+
+deft,
+xt {
+    margin-left: .2em;
+}
+
+/* Hide empty collapsed blocks. */
+.collapse .unbox .box_title + *:empty {
+    display: none !important;
+}
+
+/* Generated audio button. */
+a.mdx2dict-audio::after {
+    content: "🔊";
+}
+
+/* Dark mode fallback for dictionaries without their own color scheme. */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1e1e1e;
+        color: #ddd;
+    }
+}
